@@ -406,12 +406,37 @@ steps:
                   DATEDIFF(day,"STG_ORDERS"."O_ORDERDATE","STG_LINEITEM"."L_SHIPDATE")
             systemColumnType: None
             transform: ""
+          - columnReference:
+              columnCounter: 6df82de9-af22-48f7-abbc-10d78fc7deb2
+              stepCounter: b48b233f-0de1-4546-bd2f-73e846894a1d
+            dataType: NUMBER(38,0)
+            description: ""
+            name: PS_AVAILQTY
+            nullable: false
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 094b171e-7f37-4069-a4ef-e7da96467ead
+                    stepCounter: d170c0ed-e36b-497a-b318-e7ffded0011c
+                transform: ""
+          - columnReference:
+              columnCounter: 2e05e6fe-9684-402f-b868-079a06911c6c
+              stepCounter: b48b233f-0de1-4546-bd2f-73e846894a1d
+            dataType: NUMBER(12,2)
+            description: ""
+            name: PS_SUPPLYCOST
+            nullable: false
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 455153ba-6e4e-47b7-9718-5eafdc20f4e3
+                    stepCounter: d170c0ed-e36b-497a-b318-e7ffded0011c
+                transform: ""
         cteString: ""
         enabledColumnTestIDs: []
         sourceMapping:
           - aliases:
               STG_LINEITEM: 3f1ff51d-08d3-49fb-a4b4-26e7b455305c
               STG_ORDERS: 9190d910-a8e1-4652-9e6c-b11afa85a1f9
+              STG_PARTSUPP: d170c0ed-e36b-497a-b318-e7ffded0011c
             customSQL:
               customSQL: ""
             dependencies:
@@ -419,11 +444,16 @@ steps:
                 nodeName: STG_LINEITEM
               - locationName: WORK
                 nodeName: STG_ORDERS
+              - locationName: WORK
+                nodeName: STG_PARTSUPP
             join:
-              joinCondition: |-
+              joinCondition: |
                 FROM {{ ref('WORK', 'STG_LINEITEM') }} "STG_LINEITEM"
                 INNER JOIN {{ ref('WORK', 'STG_ORDERS') }} "STG_ORDERS"
                 ON "STG_LINEITEM"."L_ORDERKEY" = "STG_ORDERS"."O_ORDERKEY"
+                INNER JOIN {{ ref('WORK', 'STG_PARTSUPP') }} "STG_PARTSUPP"
+                ON "STG_LINEITEM".L_PARTKEY = "STG_PARTSUPP"."PS_PARTKEY"
+                and "STG_LINEITEM"."L_SUPPKEY" = "STG_PARTSUPP"."PS_SUPPKEY"
             name: STG_LINEITEM_ORDERS
             noLinkRefs: []
       name: STG_LINEITEM_ORDERS

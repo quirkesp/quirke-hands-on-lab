@@ -430,6 +430,38 @@ steps:
                   - columnCounter: 7f700c6f-cbc3-41f3-a322-64a9949a7776
                     stepCounter: b48b233f-0de1-4546-bd2f-73e846894a1d
                 transform: ""
+          - acceptedValues:
+              strictMatch: false
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: f2b2cdfe-11b5-41b6-9e56-878ab8da695e
+              stepCounter: a76404f0-57e5-4fb8-90e1-c61ed5a38584
+            dataType: NUMBER(38,0)
+            description: ""
+            name: PS_AVAILQTY
+            nullable: false
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 6df82de9-af22-48f7-abbc-10d78fc7deb2
+                    stepCounter: b48b233f-0de1-4546-bd2f-73e846894a1d
+                transform: ""
+          - acceptedValues:
+              strictMatch: false
+              values: []
+            appliedColumnTests: {}
+            columnReference:
+              columnCounter: 92660c4c-9675-4dc6-88e6-e7c28a39684c
+              stepCounter: a76404f0-57e5-4fb8-90e1-c61ed5a38584
+            dataType: NUMBER(12,2)
+            description: ""
+            name: PS_SUPPLYCOST
+            nullable: false
+            sourceColumnReferences:
+              - columnReferences:
+                  - columnCounter: 2e05e6fe-9684-402f-b868-079a06911c6c
+                    stepCounter: b48b233f-0de1-4546-bd2f-73e846894a1d
+                transform: ""
         cteString: ""
         enabledColumnTestIDs: []
         sourceMapping:
